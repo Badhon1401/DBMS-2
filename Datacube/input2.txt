@@ -1,0 +1,18 @@
+sales_table
+Region	Product	Revenue
+East	Pen	    100
+East	Pencil	150
+East	Eraser	200
+East	Marker	120
+West	Pen	    200
+West	Pencil	250
+West	Eraser	180
+West	Marker	220
+North	Pen	    300
+North	Pencil	350
+North	Eraser	400
+North	Marker	450
+South	Pen	    400
+South	Pencil	300
+South	Eraser	200
+South	Marker	150

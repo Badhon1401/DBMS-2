@@ -1,0 +1,6 @@
+age	income	student	credit_ratin
+<=30	low	no	fai	n
+<=30	medium	yes	fai	ye
+31...40	low	no	fai	ye
+>40	high	no	fai	dfs failed
+>40	low	yes	excellen	dfs failed

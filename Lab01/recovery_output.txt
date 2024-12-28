@@ -1,0 +1,6 @@
+Redo Phase:
+Redo T2: B = 400
+Redo T3: C = 600
+Redo T2: B = 500
+Undo Phase:
+Undo T4: D = 700

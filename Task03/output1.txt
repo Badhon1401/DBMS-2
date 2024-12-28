@@ -1,0 +1,200 @@
+Frequent Itemsets of Size 1:
+{ milk } : 41
+{ bread } : 34
+{ cheese } : 26
+{ eggs } : 24
+{ yogurt } : 24
+{ fruit } : 24
+{ cereal } : 23
+{ salad } : 19
+{ butter } : 19
+{ cookies } : 17
+{ pasta } : 17
+{ jam } : 16
+{ honey } : 15
+{ sugar } : 14
+{ vegetables } : 12
+{ granola } : 11
+{ ice_cream } : 11
+{ sauce } : 11
+{ garlic } : 11
+{ chocolate } : 10
+{ dressing } : 9
+{ bananas } : 9
+{ syrup } : 9
+{ chips } : 8
+{ cake } : 8
+{ meat } : 8
+{ pancakes } : 7
+{ nuts } : 7
+{ hummus } : 7
+{ coffee } : 7
+{ candy } : 7
+{ baby_food } : 7
+{ soap } : 7
+{ detergent } : 6
+{ potatoes } : 6
+{ muffins } : 6
+{ beans } : 6
+{ pita } : 5
+{ toilet_paper } : 5
+{ rice } : 5
+{ spices } : 5
+{ carrots } : 5
+{ noodles } : 5
+
+Frequent Itemsets of Size 2:
+{ eggs milk } : 20
+{ bread milk } : 18
+{ cereal milk } : 16
+{ eggs bread } : 15
+{ butter bread } : 15
+{ bread cheese } : 14
+{ fruit milk } : 13
+{ yogurt milk } : 13
+{ yogurt fruit } : 13
+{ cheese pasta } : 13
+{ butter jam } : 12
+{ cereal yogurt } : 12
+{ milk sugar } : 12
+{ jam bread } : 12
+{ bread fruit } : 12
+{ pasta sauce } : 11
+{ cheese milk } : 10
+{ milk honey } : 10
+{ salad vegetables } : 10
+{ eggs fruit } : 9
+{ salad dressing } : 9
+{ ice_cream cookies } : 9
+{ sauce garlic } : 9
+{ eggs cereal } : 9
+{ eggs cheese } : 9
+{ pasta garlic } : 9
+{ jam milk } : 8
+{ bread sugar } : 8
+{ cereal bread } : 8
+{ cereal bananas } : 8
+{ eggs yogurt } : 8
+{ cheese garlic } : 8
+{ cheese sauce } : 8
+{ cookies cake } : 8
+{ yogurt honey } : 8
+{ ice_cream cake } : 8
+{ butter cheese } : 7
+{ fruit salad } : 7
+{ butter milk } : 7
+{ jam cereal } : 7
+{ cereal honey } : 7
+{ milk coffee } : 7
+{ sugar coffee } : 7
+{ chocolate cookies } : 7
+{ fruit granola } : 7
+{ butter cereal } : 7
+{ salad hummus } : 7
+{ milk syrup } : 7
+{ cheese salad } : 7
+{ milk bananas } : 7
+{ jam cheese } : 6
+{ vegetables hummus } : 6
+{ soap detergent } : 6
+{ cereal fruit } : 6
+{ ice_cream chocolate } : 6
+{ eggs butter } : 6
+{ granola honey } : 6
+{ eggs jam } : 6
+{ eggs sugar } : 6
+{ cereal sugar } : 6
+{ cheese fruit } : 6
+{ jam fruit } : 6
+{ yogurt bananas } : 6
+{ vegetables dressing } : 6
+{ bread salad } : 6
+{ milk granola } : 6
+{ ice_cream candy } : 6
+{ cookies candy } : 6
+{ bread syrup } : 6
+{ potatoes carrots } : 5
+{ vegetables pita } : 5
+{ salad pita } : 5
+{ chocolate candy } : 5
+{ hummus pita } : 5
+{ bread coffee } : 5
+{ butter fruit } : 5
+{ ice_cream chips } : 5
+{ milk pancakes } : 5
+{ eggs honey } : 5
+{ yogurt salad } : 5
+{ bread pasta } : 5
+{ cookies chips } : 5
+{ yogurt syrup } : 5
+{ bread honey } : 5
+{ yogurt granola } : 5
+{ yogurt bread } : 5
+{ pasta noodles } : 5
+{ rice beans } : 5
+{ toilet_paper soap } : 5
+{ meat potatoes } : 5
+{ bananas honey } : 5
+{ toilet_paper detergent } : 5
+{ milk cookies } : 5
+{ fruit nuts } : 5
+
+Frequent Itemsets of Size 3:
+{ eggs bread milk } : 12
+{ pasta sauce garlic } : 9
+{ butter jam bread } : 9
+{ cheese pasta sauce } : 8
+{ ice_cream cookies cake } : 8
+{ cereal yogurt milk } : 7
+{ cheese pasta garlic } : 7
+{ cheese sauce garlic } : 7
+{ eggs fruit milk } : 7
+{ eggs cereal milk } : 7
+{ bread milk sugar } : 7
+{ milk sugar coffee } : 7
+{ eggs cheese milk } : 7
+{ bread cheese milk } : 7
+{ yogurt fruit milk } : 6
+{ eggs milk sugar } : 6
+{ eggs bread cheese } : 6
+{ salad vegetables hummus } : 6
+{ eggs yogurt milk } : 6
+{ butter bread cheese } : 6
+{ bread fruit milk } : 6
+{ cereal milk honey } : 6
+{ butter jam cereal } : 6
+{ eggs bread fruit } : 6
+{ cereal milk bananas } : 6
+{ salad vegetables dressing } : 6
+{ cereal yogurt bananas } : 5
+{ eggs cereal bread } : 5
+{ bread milk coffee } : 5
+{ bread sugar coffee } : 5
+{ ice_cream cookies candy } : 5
+{ toilet_paper soap detergent } : 5
+{ salad vegetables pita } : 5
+{ butter bread milk } : 5
+{ salad hummus pita } : 5
+{ vegetables hummus pita } : 5
+{ butter jam milk } : 5
+{ butter cereal bread } : 5
+{ bread milk syrup } : 5
+{ cereal milk sugar } : 5
+{ eggs butter bread } : 5
+{ jam bread cheese } : 5
+{ jam bread milk } : 5
+{ eggs bread sugar } : 5
+{ jam cereal bread } : 5
+{ cereal bread milk } : 5
+{ milk bananas honey } : 5
+{ bread cheese pasta } : 5
+{ yogurt fruit salad } : 5
+{ yogurt milk honey } : 5
+{ eggs milk honey } : 5
+
+Frequent Itemsets of Size 4:
+{ cheese pasta sauce garlic } : 7
+{ bread milk sugar coffee } : 5
+{ eggs bread milk sugar } : 5
+{ salad vegetables hummus pita } : 5
+

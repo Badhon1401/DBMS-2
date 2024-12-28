@@ -1,0 +1,8 @@
+Age,Race,Marital Status,T Stage ,N Stage,6th Stage,differentiate,Grade,A Stage,Tumor Size,Estrogen Status,Progesterone Status,Regional Node Examined,Reginol Node Positive,Survival Months
+58,White,Divorced,T3,N3,IIIC,Moderately differentiated,2,Regional,63,Positive,Positive,14,7,75
+58,White,Married,T1,N1,IIA,Poorly differentiated,3,Regional,18,Positive,Positive,2,1,84
+47,White,Married,T2,N1,IIB,Poorly differentiated,3,Regional,41,Positive,Positive,3,1,50
+66,White,Married,T3,N2,IIIA,Moderately differentiated,2,Regional,51,Positive,Positive,10,5,90
+42,White,Married,T1,N3,IIIC,Moderately differentiated,2,Regional,9,Negative,Negative,15,2,39
+40,White,Married,T2,N1,IIB,Moderately differentiated,2,Regional,30,Positive,Positive,9,1,14
+50,White,Divorced,T2,N1,IIB,Moderately differentiated,2,Regional,30,Positive,Negative,4,2,25

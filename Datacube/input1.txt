@@ -1,0 +1,8 @@
+SalesTable
+Region Product Revenue
+North Apple 100
+North Banana 200
+South Apple 150
+South Banana 50
+East Apple 120
+East Banana 80
