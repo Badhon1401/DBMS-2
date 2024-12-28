@@ -264,7 +264,7 @@ public:
             double p = (double)iter->second / itemCount;
 
             ret += -1.0 * p * log(p) / log(2);
-        }
+         }
 
         return ret;
     }
