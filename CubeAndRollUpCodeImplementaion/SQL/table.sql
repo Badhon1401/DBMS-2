@@ -1,0 +1,392 @@
+CREATE TABLE
+    SalesTable (
+        Region VARCHAR(20),
+        Product VARCHAR(20),
+        Category VARCHAR(20),
+        Store VARCHAR(20),
+        Quarter VARCHAR(5),
+        Revenue INT
+    );
+
+INSERT INTO
+    SalesTable (
+        Region,
+        Product,
+        Category,
+        Store,
+        Quarter,
+        Revenue
+    )
+VALUES
+    ('North', 'Apple', 'Fruit', 'Store1', 'Q1', 100),
+    ('North', 'Banana', 'Fruit', 'Store1', 'Q1', 200),
+    ('South', 'Apple', 'Fruit', 'Store2', 'Q1', 150),
+    ('South', 'Banana', 'Fruit', 'Store2', 'Q1', 50),
+    ('East', 'Apple', 'Fruit', 'Store3', 'Q1', 120),
+    ('East', 'Banana', 'Fruit', 'Store3', 'Q1', 80),
+    ('North', 'Apple', 'Fruit', 'Store1', 'Q2', 110),
+    ('North', 'Banana', 'Fruit', 'Store1', 'Q2', 220),
+    ('South', 'Apple', 'Fruit', 'Store2', 'Q2', 140),
+    ('South', 'Banana', 'Fruit', 'Store2', 'Q2', 60),
+    ('East', 'Apple', 'Fruit', 'Store3', 'Q2', 130),
+    ('East', 'Banana', 'Fruit', 'Store3', 'Q2', 90),
+    ('North', 'Apple', 'Fruit', 'Store1', 'Q3', 120),
+    ('North', 'Banana', 'Fruit', 'Store1', 'Q3', 240),
+    ('South', 'Apple', 'Fruit', 'Store2', 'Q3', 160),
+    ('South', 'Banana', 'Fruit', 'Store2', 'Q3', 70),
+    ('East', 'Apple', 'Fruit', 'Store3', 'Q3', 140),
+    ('East', 'Banana', 'Fruit', 'Store3', 'Q3', 100),
+    ('North', 'Apple', 'Fruit', 'Store1', 'Q4', 130),
+    ('North', 'Banana', 'Fruit', 'Store1', 'Q4', 260),
+    ('South', 'Apple', 'Fruit', 'Store2', 'Q4', 170),
+    ('South', 'Banana', 'Fruit', 'Store2', 'Q4', 80),
+    ('East', 'Apple', 'Fruit', 'Store3', 'Q4', 150),
+    ('East', 'Banana', 'Fruit', 'Store3', 'Q4', 110),
+    ('West', 'Apple', 'Fruit', 'Store4', 'Q1', 180),
+    ('West', 'Banana', 'Fruit', 'Store4', 'Q1', 230),
+    ('North', 'Orange', 'Fruit', 'Store1', 'Q1', 90),
+    ('South', 'Orange', 'Fruit', 'Store2', 'Q1', 130),
+    ('East', 'Orange', 'Fruit', 'Store3', 'Q1', 110),
+    ('West', 'Orange', 'Fruit', 'Store4', 'Q1', 160),
+    ('North', 'Apple', 'Fruit', 'Store1', 'Q2', 150),
+    ('South', 'Apple', 'Fruit', 'Store2', 'Q2', 190),
+    ('East', 'Apple', 'Fruit', 'Store3', 'Q2', 135),
+    ('West', 'Apple', 'Fruit', 'Store4', 'Q2', 200),
+    ('North', 'Banana', 'Fruit', 'Store1', 'Q2', 210),
+    ('South', 'Banana', 'Fruit', 'Store2', 'Q2', 75),
+    ('East', 'Banana', 'Fruit', 'Store3', 'Q2', 100),
+    ('West', 'Banana', 'Fruit', 'Store4', 'Q2', 150),
+    ('North', 'Apple', 'Fruit', 'Store1', 'Q3', 140),
+    ('South', 'Apple', 'Fruit', 'Store2', 'Q3', 180),
+    ('East', 'Apple', 'Fruit', 'Store3', 'Q3', 160),
+    ('West', 'Apple', 'Fruit', 'Store4', 'Q3', 220),
+    ('North', 'Banana', 'Fruit', 'Store1', 'Q3', 250),
+    ('South', 'Banana', 'Fruit', 'Store2', 'Q3', 90),
+    ('East', 'Banana', 'Fruit', 'Store3', 'Q3', 130),
+    ('West', 'Banana', 'Fruit', 'Store4', 'Q3', 180),
+    ('North', 'Orange', 'Fruit', 'Store1', 'Q3', 110),
+    ('South', 'Orange', 'Fruit', 'Store2', 'Q3', 140),
+    ('East', 'Orange', 'Fruit', 'Store3', 'Q3', 120),
+    ('West', 'Orange', 'Fruit', 'Store4', 'Q3', 170),
+    ('North', 'Apple', 'Fruit', 'Store1', 'Q4', 160),
+    ('South', 'Apple', 'Fruit', 'Store2', 'Q4', 210),
+    ('East', 'Apple', 'Fruit', 'Store3', 'Q4', 175),
+    ('West', 'Apple', 'Fruit', 'Store4', 'Q4', 250),
+    ('North', 'Banana', 'Fruit', 'Store1', 'Q4', 270),
+    ('South', 'Banana', 'Fruit', 'Store2', 'Q4', 100),
+    ('East', 'Banana', 'Fruit', 'Store3', 'Q4', 120),
+    ('West', 'Banana', 'Fruit', 'Store4', 'Q4', 190),
+    ('North', 'Orange', 'Fruit', 'Store1', 'Q4', 130),
+    ('South', 'Orange', 'Fruit', 'Store2', 'Q4', 160),
+    ('East', 'Orange', 'Fruit', 'Store3', 'Q4', 150),
+    ('West', 'Orange', 'Fruit', 'Store4', 'Q4', 210),
+    ('North', 'Mango', 'Fruit', 'Store1', 'Q1', 180),
+    ('South', 'Mango', 'Fruit', 'Store2', 'Q1', 200),
+    ('East', 'Mango', 'Fruit', 'Store3', 'Q1', 160),
+    ('West', 'Mango', 'Fruit', 'Store4', 'Q1', 230),
+    ('North', 'Grapes', 'Fruit', 'Store1', 'Q1', 120),
+    ('South', 'Grapes', 'Fruit', 'Store2', 'Q1', 170),
+    ('East', 'Grapes', 'Fruit', 'Store3', 'Q1', 140),
+    ('West', 'Grapes', 'Fruit', 'Store4', 'Q1', 180),
+    (
+        'North',
+        'Pineapple',
+        'Fruit',
+        'Store1',
+        'Q2',
+        200
+    ),
+    (
+        'South',
+        'Pineapple',
+        'Fruit',
+        'Store2',
+        'Q2',
+        220
+    ),
+    ('East', 'Pineapple', 'Fruit', 'Store3', 'Q2', 180),
+    ('West', 'Pineapple', 'Fruit', 'Store4', 'Q2', 250),
+    ('North', 'Apple', 'Fruit', 'Store1', 'Q5', 170),
+    ('South', 'Apple', 'Fruit', 'Store2', 'Q5', 180),
+    ('East', 'Apple', 'Fruit', 'Store3', 'Q5', 200),
+    ('West', 'Apple', 'Fruit', 'Store4', 'Q5', 240),
+    ('North', 'Banana', 'Fruit', 'Store1', 'Q5', 220),
+    ('South', 'Banana', 'Fruit', 'Store2', 'Q5', 250),
+    ('East', 'Banana', 'Fruit', 'Store3', 'Q5', 280),
+    ('West', 'Banana', 'Fruit', 'Store4', 'Q5', 300),
+    ('North', 'Mango', 'Fruit', 'Store1', 'Q5', 200),
+    ('South', 'Mango', 'Fruit', 'Store2', 'Q5', 230),
+    ('East', 'Mango', 'Fruit', 'Store3', 'Q5', 220),
+    ('West', 'Mango', 'Fruit', 'Store4', 'Q5', 250),
+    ('North', 'Grapes', 'Fruit', 'Store1', 'Q5', 180),
+    ('South', 'Grapes', 'Fruit', 'Store2', 'Q5', 210),
+    ('East', 'Grapes', 'Fruit', 'Store3', 'Q5', 190),
+    ('West', 'Grapes', 'Fruit', 'Store4', 'Q5', 220),
+    (
+        'North',
+        'Pineapple',
+        'Fruit',
+        'Store1',
+        'Q5',
+        220
+    ),
+    (
+        'South',
+        'Pineapple',
+        'Fruit',
+        'Store2',
+        'Q5',
+        240
+    ),
+    ('East', 'Pineapple', 'Fruit', 'Store3', 'Q5', 260),
+    ('West', 'Pineapple', 'Fruit', 'Store4', 'Q5', 280),
+    (
+        'North',
+        'Carrot',
+        'Vegetable',
+        'Store1',
+        'Q1',
+        90
+    ),
+    (
+        'South',
+        'Carrot',
+        'Vegetable',
+        'Store2',
+        'Q1',
+        130
+    ),
+    (
+        'East',
+        'Carrot',
+        'Vegetable',
+        'Store3',
+        'Q1',
+        110
+    ),
+    (
+        'West',
+        'Carrot',
+        'Vegetable',
+        'Store4',
+        'Q1',
+        150
+    ),
+    (
+        'North',
+        'Tomato',
+        'Vegetable',
+        'Store1',
+        'Q1',
+        140
+    ),
+    (
+        'South',
+        'Tomato',
+        'Vegetable',
+        'Store2',
+        'Q1',
+        160
+    ),
+    (
+        'East',
+        'Tomato',
+        'Vegetable',
+        'Store3',
+        'Q1',
+        130
+    ),
+    (
+        'West',
+        'Tomato',
+        'Vegetable',
+        'Store4',
+        'Q1',
+        180
+    ),
+    (
+        'North',
+        'Cucumber',
+        'Vegetable',
+        'Store1',
+        'Q1',
+        100
+    ),
+    (
+        'South',
+        'Cucumber',
+        'Vegetable',
+        'Store2',
+        'Q1',
+        120
+    ),
+    (
+        'East',
+        'Cucumber',
+        'Vegetable',
+        'Store3',
+        'Q1',
+        110
+    ),
+    (
+        'West',
+        'Cucumber',
+        'Vegetable',
+        'Store4',
+        'Q1',
+        130
+    ),
+    (
+        'North',
+        'Lettuce',
+        'Vegetable',
+        'Store1',
+        'Q2',
+        110
+    ),
+    (
+        'South',
+        'Lettuce',
+        'Vegetable',
+        'Store2',
+        'Q2',
+        140
+    ),
+    (
+        'East',
+        'Lettuce',
+        'Vegetable',
+        'Store3',
+        'Q2',
+        120
+    ),
+    (
+        'West',
+        'Lettuce',
+        'Vegetable',
+        'Store4',
+        'Q2',
+        150
+    ),
+    (
+        'North',
+        'Pepper',
+        'Vegetable',
+        'Store1',
+        'Q2',
+        130
+    ),
+    (
+        'South',
+        'Pepper',
+        'Vegetable',
+        'Store2',
+        'Q2',
+        160
+    ),
+    (
+        'East',
+        'Pepper',
+        'Vegetable',
+        'Store3',
+        'Q2',
+        140
+    ),
+    (
+        'West',
+        'Pepper',
+        'Vegetable',
+        'Store4',
+        'Q2',
+        180
+    ),
+    ('Central', 'Apple', 'Fruit', 'Store5', 'Q1', 210),
+    ('Central', 'Banana', 'Fruit', 'Store5', 'Q1', 250),
+    ('Central', 'Mango', 'Fruit', 'Store5', 'Q1', 220),
+    ('Central', 'Grapes', 'Fruit', 'Store5', 'Q1', 190),
+    (
+        'Central',
+        'Pineapple',
+        'Fruit',
+        'Store5',
+        'Q1',
+        240
+    ),
+    (
+        'Central',
+        'Carrot',
+        'Vegetable',
+        'Store5',
+        'Q1',
+        130
+    ),
+    (
+        'Central',
+        'Tomato',
+        'Vegetable',
+        'Store5',
+        'Q1',
+        160
+    ),
+    (
+        'Central',
+        'Cucumber',
+        'Vegetable',
+        'Store5',
+        'Q1',
+        120
+    ),
+    (
+        'Central',
+        'Lettuce',
+        'Vegetable',
+        'Store5',
+        'Q1',
+        140
+    ),
+    (
+        'Central',
+        'Pepper',
+        'Vegetable',
+        'Store5',
+        'Q1',
+        170
+    ),
+    (
+        'North',
+        'Pineapple',
+        'Fruit',
+        'Store1',
+        'Q6',
+        250
+    ),
+    (
+        'South',
+        'Pineapple',
+        'Fruit',
+        'Store2',
+        'Q6',
+        260
+    ),
+    ('East', 'Pineapple', 'Fruit', 'Store3', 'Q6', 280),
+    ('West', 'Pineapple', 'Fruit', 'Store4', 'Q6', 300),
+    ('North', 'Apple', 'Fruit', 'Store1', 'Q6', 270),
+    ('South', 'Apple', 'Fruit', 'Store2', 'Q6', 290),
+    ('East', 'Apple', 'Fruit', 'Store3', 'Q6', 310),
+    ('West', 'Apple', 'Fruit', 'Store4', 'Q6', 320),
+    ('North', 'Banana', 'Fruit', 'Store1', 'Q6', 300),
+    ('South', 'Banana', 'Fruit', 'Store2', 'Q6', 330),
+    ('East', 'Banana', 'Fruit', 'Store3', 'Q6', 340),
+    ('West', 'Banana', 'Fruit', 'Store4', 'Q6', 350),
+    ('Central', 'Apple', 'Fruit', 'Store5', 'Q6', 360),
+    ('Central', 'Banana', 'Fruit', 'Store5', 'Q6', 370),
+    ('Central', 'Mango', 'Fruit', 'Store5', 'Q6', 380),
+    ('Central', 'Grapes', 'Fruit', 'Store5', 'Q6', 390),
+    (
+        'Central',
+        'Pineapple',
+        'Fruit',
+        'Store5',
+        'Q6',
+        400
+    );
