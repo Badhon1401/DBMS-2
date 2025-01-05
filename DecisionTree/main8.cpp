@@ -15,8 +15,8 @@ class Table
 public:
     vector<string> attrName;
     vector<vector<string>> data;
-    vector<vector<string>> attrValueList;
 
+    vector<vector<string>> attrValueList;
     void extractAttrValue()
     {
         attrValueList.resize(attrName.size());
@@ -58,62 +58,27 @@ class DecisionTree
 public:
     Table initialTable;
     vector<Node> tree;
-    string method;
 
-    DecisionTree(Table table, string m)
+    DecisionTree(Table table)
     {
         initialTable = table;
         initialTable.extractAttrValue();
-        method = m;
 
         Node root;
         root.treeIndex = 0;
         tree.push_back(root);
         run(initialTable, 0);
     }
-
-    string guess(vector<string> row)
-    {
-        string label = "";
-        int leafNode = dfs(row, 0);
-        if (leafNode == -1)
-        {
-            return "dfs failed";
-        }
-        label = tree[leafNode].label;
-        return label;
-    }
-
     int chooseHeuristicBranch(int here)
     {
-        if (tree[here].children.empty())
-        {
-            return -1;
-        }
-
         int bestChild = -1;
         int maxDataPoints = -1;
 
         for (int next : tree[here].children)
         {
-            if (next < 0 || next >= tree.size())
-            {
-                continue;
-            }
-
-            if (tree[next].criteriaAttrIndex < 0 || tree[next].criteriaAttrIndex >= initialTable.attrName.size())
-            {
-                continue;
-            }
-
             int count = 0;
             for (const auto &row : initialTable.data)
             {
-                if (tree[next].criteriaAttrIndex >= row.size())
-                {
-                    continue;
-                }
-
                 if (row[tree[next].criteriaAttrIndex] == tree[next].attrValue)
                 {
                     count++;
@@ -126,7 +91,20 @@ public:
                 bestChild = next;
             }
         }
+
         return bestChild;
+    }
+
+    string guess(vector<string> row)
+    {
+        string label = "";
+        int leafNode = dfs(row, 0);
+        if (leafNode == -1)
+        {
+            return "dfs failed";
+        }
+        label = tree[leafNode].label;
+        return label;
     }
 
     int dfs(vector<string> &row, int here)
@@ -147,17 +125,45 @@ public:
                 return dfs(row, next);
             }
         }
-
-        int heuristicBranch = chooseHeuristicBranch(here);
-        if (heuristicBranch == -1)
+        if (!tree[here].children.empty())
         {
-
-            return dfs(row, tree[here].children[0]);
-        }
-        else
-        {
-
+            int heuristicBranch = chooseHeuristicBranch(here);
             return dfs(row, heuristicBranch);
+        }
+
+        return -1;
+    }
+
+    string guessOnQuery(vector<string> row)
+    {
+        string label = "";
+        int leafNode = dfsOnQuery(row, 0);
+        if (leafNode == -1)
+        {
+            return "dfs failed";
+        }
+        label = tree[leafNode].label;
+        return label;
+    }
+
+    int dfsOnQuery(vector<string> &row, int here)
+    {
+        if (tree[here].isLeaf)
+        {
+            return here;
+        }
+
+        int criteriaAttrIndex = tree[here].criteriaAttrIndex;
+        cout << initialTable.attrName[criteriaAttrIndex] << ": " << row[criteriaAttrIndex] << " -> ";
+
+        for (int i = 0; i < tree[here].children.size(); i++)
+        {
+            int next = tree[here].children[i];
+
+            if (row[criteriaAttrIndex] == tree[next].attrValue)
+            {
+                return dfsOnQuery(row, next);
+            }
         }
 
         return -1;
@@ -254,48 +260,23 @@ public:
     int getSelectedAttribute(Table table)
     {
         int maxAttrIndex = -1;
-        double maxAttrValue = (method == "entropy") ? 0.0 : numeric_limits<double>::min();
+        double maxAttrValue = 0.0;
 
         for (int i = 0; i < initialTable.attrName.size() - 1; i++)
         {
-            double currentValue = (method == "entropy") ? getGainRatio(table, i) : getStandardDeviation(table, i);
-
-            if ((method == "entropy" && currentValue > maxAttrValue) || (method == "standard_deviation" && currentValue > maxAttrValue))
+            if (maxAttrValue < getGainRatio(table, i))
             {
-                maxAttrValue = currentValue;
+                maxAttrValue = getGainRatio(table, i);
                 maxAttrIndex = i;
             }
         }
 
         return maxAttrIndex;
     }
-    double getStandardDeviation(Table table, int attrIndex)
-    {
-        double mean = 0.0;
-        int itemCount = (int)table.data.size();
 
-        // Calculate the mean for the attribute
-        for (const auto &row : table.data)
-        {
-            mean += stod(row[attrIndex]);
-        }
-        mean /= itemCount;
-
-        // Calculate the variance
-        double variance = 0.0;
-        for (const auto &row : table.data)
-        {
-            double diff = stod(row[attrIndex]) - mean;
-            variance += diff * diff;
-        }
-        variance /= itemCount;
-
-        // Return the standard deviation (sqrt of variance)
-        return sqrt(variance);
-    }
     double getGainRatio(Table table, int attrIndex)
     {
-        return getGain(table, attrIndex) / getSplitInfoAttrD(table, attrIndex);
+        return getGain(table, attrIndex)/ getSplitInfoAttrD(table, attrIndex);
     }
 
     double getInfoD(Table table)
@@ -380,6 +361,7 @@ public:
     }
 };
 
+// Function to read input from the file and parse it
 Table readInput(const string &filename)
 {
     ifstream fin(filename);
@@ -422,6 +404,7 @@ Table readInput(const string &filename)
     return table;
 }
 
+// Function to join a vector of strings by tab
 string joinByTab(const vector<string> &row)
 {
     string ret = "";
@@ -436,17 +419,127 @@ string joinByTab(const vector<string> &row)
     return ret;
 }
 
+// Function to write output to a file
+void printOutput(const string &filename, const Table &testTable, const vector<string> &results)
+{
+    ofstream fout(filename);
+    if (!fout)
+    {
+        cout << filename << " file could not be opened\n";
+        exit(0);
+    }
+
+    fout << joinByTab(testTable.attrName) << "(Actual)    " << testTable.attrName.back() + "(Output)" << endl;
+    for (size_t i = 0; i < testTable.data.size(); i++)
+    {
+        vector<string> row = testTable.data[i];
+        row.push_back(results[i]);
+        fout << joinByTab(row) << endl;
+    }
+}
+
+void interactiveQuerySession(DecisionTree &decisionTree, const vector<string> &attrNames, const Table &trainTable)
+{
+    while (true)
+    {
+        system("cls"); // Clear the screen before showing the options again
+        cout << "Interactive Decision Tree Query System\n";
+
+        vector<string> queryRow;
+        // vector<string> selectedCategories; // To store the categories chosen by the user
+
+        // Loop through each attribute and get valid input from the user
+        for (size_t attrIdx = 0; attrIdx < attrNames.size() - 1; ++attrIdx)
+        {
+            const string &attribute = attrNames[attrIdx];
+            set<string> validOptions;
+
+            // Collect valid options from the training data
+            for (const auto &row : trainTable.data)
+            {
+                validOptions.insert(row[attrIdx]);
+            }
+
+            string userInput;
+            while (true)
+            {
+                // Display the options with numbers
+                cout << "\n"
+                     << attribute << " (Choose one of the following options):\n";
+                int optionNumber = 1;
+                for (const auto &option : validOptions)
+                {
+                    cout << optionNumber++ << ". " << option << "\n";
+                }
+
+                cout << "\n"
+                     << attribute << ": ";
+                getline(cin, userInput);
+
+                // Validate user input (checking if input is a number within range)
+                try
+                {
+                    int selectedOption = stoi(userInput);
+                    if (selectedOption >= 1 && selectedOption <= validOptions.size())
+                    {
+                        // Find the corresponding option (1-based index)
+                        auto it = validOptions.begin();
+                        advance(it, selectedOption - 1); // Move iterator to the selected option
+                        queryRow.push_back(*it);
+                        //  selectedCategories.push_back(*it); // Store the selected category
+                        break;
+                    }
+                    else
+                    {
+                        cout << "\nInvalid input! Please choose a valid option.\n";
+                    }
+                }
+                catch (...)
+                {
+                    cout << "\nInvalid input! Please choose a valid option.\n";
+                }
+            }
+        }
+
+        // // Show selected categories for each attribute
+        // cout << "\nYou have selected the following options:\n";
+        // for (size_t i = 0; i < attrNames.size(); ++i)
+        // {
+        //     cout << attrNames[i] << ": " << selectedCategories[i] << "\n";
+        // }
+
+        // Make a prediction using the decision tree
+        string result = decisionTree.guessOnQuery(queryRow);
+        cout << "\nPrediction: " << trainTable.attrName.back() << " : " << result << "\n";
+
+        // Ask if the user wants to query again
+        cout << "\nWould you like to query again? (y/n): ";
+        string again;
+        getline(cin, again);
+        if (again != "y" && again != "Y")
+        {
+            cout << "Exiting the query system.\n";
+            break;
+        }
+    }
+}
+
+
+// Function to split data into training and testing sets
 void splitData(const Table &data, double trainPercentage, Table &trainSet, Table &testSet)
 {
     vector<int> indices(data.data.size());
-    iota(indices.begin(), indices.end(), 0);
+    iota(indices.begin(), indices.end(), 0); // Generate indices 0, 1, 2, ..., N-1
 
+    // Shuffle indices to randomize data
     random_device rd;
     mt19937 gen(rd());
     shuffle(indices.begin(), indices.end(), gen);
 
+    // Calculate number of rows for training data
     size_t trainSize = static_cast<size_t>(trainPercentage * data.data.size() / 100.0);
 
+    // Populate training and testing sets
     for (size_t i = 0; i < data.data.size(); ++i)
     {
         if (i < trainSize)
@@ -459,6 +552,7 @@ void splitData(const Table &data, double trainPercentage, Table &trainSet, Table
         }
     }
 
+    // Copy attribute names
     trainSet.attrName = data.attrName;
     testSet.attrName = data.attrName;
 }
@@ -468,6 +562,7 @@ void calculateMetrics(const vector<string> &predictions, const vector<string> &a
     map<string, int> truePositives, falsePositives, falseNegatives;
     set<string> uniqueLabels;
 
+    // Initialize metrics
     for (const auto &label : actualLabels)
     {
         uniqueLabels.insert(label);
@@ -476,7 +571,7 @@ void calculateMetrics(const vector<string> &predictions, const vector<string> &a
         falseNegatives[label] = 0;
     }
 
-    int totalTestCases = predictions.size();
+    // Count True Positives, False Positives, and False Negatives
     for (size_t i = 0; i < predictions.size(); i++)
     {
         const string &predicted = predictions[i];
@@ -502,10 +597,6 @@ void calculateMetrics(const vector<string> &predictions, const vector<string> &a
         int TP = truePositives[label];
         int FP = falsePositives[label];
         int FN = falseNegatives[label];
-        int classTotal = TP + FN + FP;
-
-        int passedTestCases = TP;
-        int failedTestCases = classTotal - passedTestCases;
 
         overallTP += TP;
         overallFP += FP;
@@ -514,7 +605,6 @@ void calculateMetrics(const vector<string> &predictions, const vector<string> &a
         double precision = (TP + FP > 0) ? (double)TP / (TP + FP) : 0.0;
         double recall = (TP + FN > 0) ? (double)TP / (TP + FN) : 0.0;
         double f1Score = (precision + recall > 0) ? 2 * (precision * recall) / (precision + recall) : 0.0;
-
         double d2H = sqrt(pow(1 - recall, 2) + pow(1 - precision, 2));
 
         statsFile << "Class: " << label << endl;
@@ -528,6 +618,7 @@ void calculateMetrics(const vector<string> &predictions, const vector<string> &a
         totalF1 += f1Score;
     }
 
+    // Macro-average metrics
     double macroPrecision = totalPrecision / uniqueLabels.size();
     double macroRecall = totalRecall / uniqueLabels.size();
     double macroF1 = totalF1 / uniqueLabels.size();
@@ -537,6 +628,7 @@ void calculateMetrics(const vector<string> &predictions, const vector<string> &a
     statsFile << "  Recall: " << fixed << setprecision(2) << macroRecall * 100 << "%" << endl;
     statsFile << "  F1 Score: " << fixed << setprecision(2) << macroF1 * 100 << "%" << endl;
 
+    // Overall metrics
     double overallPrecision = (overallTP + overallFP > 0) ? (double)overallTP / (overallTP + overallFP) : 0.0;
     double overallRecall = (overallTP + overallFN > 0) ? (double)overallTP / (overallTP + overallFN) : 0.0;
     double overallF1 = (overallPrecision + overallRecall > 0) ? 2 * (overallPrecision * overallRecall) / (overallPrecision + overallRecall) : 0.0;
@@ -549,79 +641,65 @@ void calculateMetrics(const vector<string> &predictions, const vector<string> &a
     statsFile << "  Distance to Heaven (D2H): " << fixed << setprecision(2) << overallD2H << endl;
 }
 
-void kFoldCrossValidation(const Table &data, int k, ofstream &statsFile,const string &method)
-{
-    vector<int> indices(data.data.size());
-    iota(indices.begin(), indices.end(), 0);
-
-    random_device rd;
-    mt19937 gen(rd());
-    shuffle(indices.begin(), indices.end(), gen);
-
-    size_t foldSize = data.data.size() / k;
-
-    statsFile << "K-Fold Cross Validation Results:\n";
-
-    for (int fold = 0; fold < k; ++fold)
-    {
-        Table trainSet, testSet;
-
-        size_t testStart = fold * foldSize;
-        size_t testEnd = (fold == k - 1) ? data.data.size() : testStart + foldSize;
-
-        for (size_t i = 0; i < data.data.size(); ++i)
-        {
-            if (i >= testStart && i < testEnd)
-            {
-                testSet.data.push_back(data.data[indices[i]]);
-            }
-            else
-            {
-                trainSet.data.push_back(data.data[indices[i]]);
-            }
-        }
-
-        trainSet.attrName = data.attrName;
-        testSet.attrName = data.attrName;
-
-        DecisionTree decisionTree(trainSet, method);
-
-        vector<string> results;
-        vector<string> actualLabels;
-        for (const auto &row : testSet.data)
-        {
-            string prediction = decisionTree.guess(row);
-            results.push_back(prediction);
-            actualLabels.push_back(row.back());
-        }
-
-        statsFile << "\nFold " << fold + 1 << " Metrics:\n";
-        calculateMetrics(results, actualLabels, statsFile);
-    }
-
-    statsFile << "\nK-Fold Cross Validation Completed.\n";
-}
-
 int main()
 {
-
+    // Input file name
     const string trainFileName = "winequality-white.csv";
-    Table data = readInput(trainFileName);
-    ofstream statsFile1("test_stats_entropy.txt");
-    ofstream statsFile2("test_stats_standard_deviation.txt");
-    int k;
-    cout << "Enter the value of K for K-Fold Cross Validation: ";
-    cin >> k;
 
-    if (k > 1 && k <= data.data.size())
+    // Load data from file
+    Table data = readInput(trainFileName);
+
+    // Ask for training percentage and validate input
+    double trainPercentage;
+    while (true)
     {
-            kFoldCrossValidation(data, k, statsFile1, "entropy");
-            kFoldCrossValidation(data, k, statsFile2, "standard_deviation");
+        cout << "Enter the percentage of data to be used for training (0-100): ";
+        cin >> trainPercentage;
+
+        // Check if input is invalid (non-numeric or out of bounds)
+        if (cin.fail() || trainPercentage < 0 || trainPercentage > 100)
+        {
+            cin.clear();                // Clear the error state of cin
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+            cout << "Invalid input! Please enter a valid percentage between 0 and 100.\n";
+        }
+        else
+        {
+            break; // Valid input
+        }
     }
-    else
+
+    // Split data into training and testing sets
+    Table trainSet, testSet;
+    splitData(data, trainPercentage, trainSet, testSet);
+
+    // Initialize Decision Tree with training data
+    DecisionTree decisionTree(trainSet);
+
+    // Get predictions for test data
+    vector<string> results;
+    vector<string> actualLabels;
+    for (const auto &row : testSet.data)
     {
-        cout << "Invalid K value. Skipping K-Fold Cross Validation.\n";
+        string prediction = decisionTree.guess(row);
+        results.push_back(prediction);
+        actualLabels.push_back(row.back()); // Assuming last column is the label
     }
-    cout << "Execution Completed";
+
+    // Write test results to output file
+    printOutput("result.txt", testSet, results);
+
+    // Write test statistics
+    ofstream statsFile("test_stats.txt");
+    calculateMetrics(results, actualLabels, statsFile);
+    statsFile.close();
+
+    cout << "Test results have been written to 'result.txt' and statistics to 'test_stats.txt'.\n";
+    cin.get();
+    cin.get();
+
+    // Start interactive query session
+    interactiveQuerySession(decisionTree, testSet.attrName, trainSet);
+
     return 0;
 }

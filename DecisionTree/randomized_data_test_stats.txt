@@ -1,0 +1,68 @@
+Metrics per class:
+Class: 3
+  Total Test Cases: 9
+  Passed Test Cases: 0
+  Failed Test Cases: 9
+  Precision: 0.00%
+  Recall: 0.00%
+  F1 Score: 0.00%
+  Distance to Heaven (D2H): 1.41
+Class: 4
+  Total Test Cases: 118
+  Passed Test Cases: 5
+  Failed Test Cases: 113
+  Precision: 14.71%
+  Recall: 5.62%
+  F1 Score: 8.13%
+  Distance to Heaven (D2H): 1.27
+Class: 5
+  Total Test Cases: 1033
+  Passed Test Cases: 316
+  Failed Test Cases: 717
+  Precision: 51.80%
+  Recall: 42.76%
+  F1 Score: 46.85%
+  Distance to Heaven (D2H): 0.75
+Class: 6
+  Total Test Cases: 1550
+  Passed Test Cases: 598
+  Failed Test Cases: 952
+  Precision: 55.01%
+  Recall: 56.36%
+  F1 Score: 55.68%
+  Distance to Heaven (D2H): 0.63
+Class: 7
+  Total Test Cases: 874
+  Passed Test Cases: 235
+  Failed Test Cases: 639
+  Precision: 35.93%
+  Recall: 51.65%
+  F1 Score: 42.38%
+  Distance to Heaven (D2H): 0.80
+Class: 8
+  Total Test Cases: 134
+  Passed Test Cases: 25
+  Failed Test Cases: 109
+  Precision: 39.68%
+  Recall: 26.04%
+  F1 Score: 31.45%
+  Distance to Heaven (D2H): 0.95
+Class: 9
+  Total Test Cases: 1
+  Passed Test Cases: 0
+  Failed Test Cases: 1
+  Precision: 0.00%
+  Recall: 0.00%
+  F1 Score: 0.00%
+  Distance to Heaven (D2H): 1.41
+
+Macro-Averaged Metrics:
+  Precision: 28.16%
+  Recall: 26.06%
+  F1 Score: 26.36%
+
+Overall Metrics:
+  Precision: 48.14%
+  Recall: 48.14%
+  F1 Score: 48.14%
+  Distance to Heaven (D2H): 0.73
