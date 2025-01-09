@@ -1,0 +1,13 @@
+Training Phase Results:
+Query Point: (72.55, 46.78, 79.23, 9.67, 3.38), Nearest Point: (88.21, 44.88, 76.31, 3.32, 14.65), Nearest Distance: 20.6084
+Query Point: (89.74, 91.83, 32, 80.07, 13.64), Nearest Point: (59.07, 93.88, 23.61, 96.97, 4.63), Nearest Distance: 37.1757
+Query Point: (15.21, 38.84, 49.48, 0.96, 52.6), Nearest Point: (8.65, 42.03, 60.65, 18.71, 45.77), Nearest Distance: 23.2312
+Query Point: (46.52, 8.87, 55.45, 44.05, 45.57), Nearest Point: (59.39, 20.28, 52.28, 30.48, 36.05), Nearest Distance: 24.0967
+Query Point: (82.4, 39.75, 37.48, 72.29, 27.95), Nearest Point: (83.87, 28.31, 46.66, 82.21, 19.25), Nearest Distance: 19.7839
+Query Point: (73.81, 93.72, 47.13, 84.44, 68.38), Nearest Point: (73.53, 68.56, 68.45, 81.6, 71.56), Nearest Distance: 33.2539
+Query Point: (13.26, 52.75, 12.22, 50.05, 26.04), Nearest Point: (17.49, 53.82, 24.55, 52.36, 18.24), Nearest Distance: 15.4027
+Query Point: (8.58, 40.23, 48.58, 24.52, 65.09), Nearest Point: (8.65, 42.03, 60.65, 18.71, 45.77), Nearest Distance: 23.5786
+Query Point: (85.76, 57.89, 89.26, 80.75, 99.7), Nearest Point: (78.19, 48.97, 61.62, 70.12, 99.03), Nearest Distance: 31.8479
+Query Point: (1.41, 30.16, 12.94, 38.04, 86.93), Nearest Point: (9.54, 6.66, 23.79, 50.52, 74.36), Nearest Distance: 32.401
+Query Point: (70.7, 55.88, 35.37, 47.39, 91.49), Nearest Point: (70.75, 55.88, 35.37, 47.39, 91.49), Nearest Distance: 0.05
+Query Point: (1, 1, 1, 1, 1), Nearest Point: (2, 2, 2, 2, 2), Nearest Distance: 2.23607
