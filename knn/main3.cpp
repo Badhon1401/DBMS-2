@@ -197,23 +197,20 @@ public:
         }
     }
 
-    vector<Node *> KnearestNeighbors(const vector<double> &queryPoint, int numberOfNeighbors) const
-{
-    // Priority queue to store nearest neighbors (max-heap to store the farthest neighbor at the top)
+    vector<Node *> KnearestNeighbors(const vector<double> &queryPoint, int numberOfNeighbors) const{
+   
     priority_queue<pair<double, Node *>> nearestNeighbors;
     
-    // Recursive function to find K nearest neighbors
     KnearestNeighborsRecursive(root, queryPoint, 0, nearestNeighbors, numberOfNeighbors);
 
-    // Extract the neighbors from the priority queue into a vector
     vector<Node *> result;
+
     while (!nearestNeighbors.empty())
     {
         result.push_back(nearestNeighbors.top().second);
         nearestNeighbors.pop();
     }
 
-    // Reverse the vector to have neighbors in ascending order of distance
     reverse(result.begin(), result.end());
     return result;
 }
@@ -383,10 +380,10 @@ void getKNearestNeighbours(KDTree &tree, size_t dimensions) {
 
         vector<Node *> nearestNodes = tree.KnearestNeighbors(queryPoint, numberOfNearestNeighbours);
 
-        sort(nearestNodes.begin(), nearestNodes.end(),
-             [&queryPoint, &tree](Node *a, Node *b) {
-                 return tree.calculateDistance(a->point, queryPoint) < tree.calculateDistance(b->point, queryPoint);
-             });
+        // sort(nearestNodes.begin(), nearestNodes.end(),
+        //      [&queryPoint, &tree](Node *a, Node *b) {
+        //          return tree.calculateDistance(a->point, queryPoint) < tree.calculateDistance(b->point, queryPoint);
+        //      });
 
         cout << "Query Point: (";
         for (size_t i = 0; i < queryPoint.size(); i++) {
@@ -396,7 +393,7 @@ void getKNearestNeighbours(KDTree &tree, size_t dimensions) {
         }
         cout << ")\n";
 
-        // Print the details of the nearest neighbors
+       
         cout << "Nearest Neighbours:\n";
         for (size_t i = 0; i < nearestNodes.size(); i++) {
             Node *node = nearestNodes[i];
@@ -537,6 +534,3 @@ outFile << "\nEnd of Training Phase\n";
 
     return 0;
 }
-
-
-

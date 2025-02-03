@@ -1,0 +1,11 @@
+Cluster Predictions:
+Country XYZ(BLUE,BLUE,BLUE) Predicted Country => XYZ
+Country ARGENTINA(WHITE,BLUE,YELLOW) Predicted Country => ARGENTINA
+Country MEXICO(GREEN,WHITE,RED,GREEN) Predicted Country => MEXICO
+Country POLAND(RED,WHITE) Predicted Country => POLAND
+Country BANGLADESH(GREEN,RED,GREEN) Predicted Country => BANGLADESH
+Country INDIA(YELLOW,WHITE,GREEN) Predicted Country => INDIA
+Country UK(RED,WHITE,BLUE,RED) Predicted Country => UK
+Country ITALY(GREEN,WHITE,RED) Predicted Country => ITALY
+Country UNITED STATES(RED,WHITE,BLUE,RED) Predicted Country => UNITED STATES
+Country FRANCE(RED,WHITE,BLUE) Predicted Country => FRANCE
